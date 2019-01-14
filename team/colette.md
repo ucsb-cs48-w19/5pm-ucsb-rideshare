@@ -1,0 +1,1 @@
+My name is Colette.  I like art, music, and food.  Other than C++ experience from CS16, 24, and 32, I have some experience with Javascript, though I haven't used it in a while.  I have a little bit of experience with Swift but not much.  I've never done a project this big, so I'll definitely get experience with that from this class.
