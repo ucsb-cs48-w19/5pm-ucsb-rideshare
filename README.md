@@ -15,7 +15,10 @@ An app to help UCSB students coordinate carpools.
         * cost
         * contact information     
     2. see all current rides in a list
-    
+
+### Heroku Link
+https://ucsb-rideshare-w19.herokuapp.com
+
 ### Additional information about the project
 An app dedicated to facilitating shared rides and carpools as painlessly as possible. Drivers can post rides with a user friendly and flexible form, and riders can quickly find rides that suit their needs with a filtered search! Designed for those who are tired of scrolling through endless facebook posts in search of a ride that suits their needs. 
 
