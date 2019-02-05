@@ -6,5 +6,9 @@ router.get("/", function(request, response) {
 	response.render("rides");
 });
 
+router.get("/add", function(request, response) {
+	response.render("add_rides");
+});
+
 
 module.exports = router;
