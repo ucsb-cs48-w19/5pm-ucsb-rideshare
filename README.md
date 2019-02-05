@@ -20,11 +20,18 @@ An app to help UCSB students coordinate carpools.
 An app dedicated to facilitating shared rides and carpools as painlessly as possible. Drivers can post rides with a user friendly and flexible form, and riders can quickly find rides that suit their needs with a filtered search! Designed for those who are tired of scrolling through endless facebook posts in search of a ride that suits their needs. 
 
 ### Installation
-Prerequisites
-TODO: List what a user needs to have installed before running the installation instructions below (e.g., git, which versions of Ruby/Rails)
+Prerequisites:
+User must have the most current version of node.js installed on their machine as well as Bower package manager. 
 
 ### Installation Steps
-TODO: Describe the installation process (making sure you mention bundle install). Instructions need to be such that a user can just copy/paste the commands to get things set up and running.
+To install node.js go to nodejs.org and follow the website's installation instructions. <br>
+After forking the repo open a terminal window, navigate to 5pm-ucsb-rideshare/rideshare-app and type the following lines into your terminal: <br> 
+npm install <br>
+npm install -g bower <br>
+bower install bootstrap <br> 
+bower install jquery <br>
+To run the app on local host type the following line into the terminal: npm run dev <br>
+The app is now running on localhost:5000.
 
 ### Functionality
 TODO: Write usage instructions. Structuring it as a walkthrough can help structure this section, and showcase your features.
