@@ -1,0 +1,24 @@
+{
+  "name": "5pm-ucsb-rideshare",
+  "version": "1.0.0",
+  "description": "Make sure to check out the repo anew (potentially on a loaned laptop) and test your installation instructions.",
+  "main": "index.js",
+  "dependencies": {
+    "mysql": "^2.16.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ucsb-cs48-w19/5pm-ucsb-rideshare.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ucsb-cs48-w19/5pm-ucsb-rideshare/issues"
+  },
+  "homepage": "https://github.com/ucsb-cs48-w19/5pm-ucsb-rideshare#readme"
+}
