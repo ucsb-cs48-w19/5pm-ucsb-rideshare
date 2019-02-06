@@ -1,5 +1,6 @@
 const express = require("express");
 const expHandlebars = require("express-handlebars");
+const bodyParser = require("body-parser");
 const path = require("path");
 
 // Initialize the express variable for routes
@@ -11,6 +12,9 @@ app.set("view engine", "handlebars");
 
 // // Setting static folder for css and images
 app.use(express.static(path.join(__dirname, "static")));
+
+// Middleware for bodyparser
+app.use(bodyParser.urlencoded({extended: false}));
 
 
 // Home route
