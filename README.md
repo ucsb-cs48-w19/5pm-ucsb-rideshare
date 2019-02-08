@@ -31,7 +31,8 @@ npm install -g bower <br>
 bower install bootstrap <br> 
 bower install jquery <br>
 To run the app on local host type the following line into the terminal: npm run dev <br>
-The app is now running on localhost:5000.
+The app is now running on localhost:5000. <br> 
+The app can also be accessed from https://ucsb-rideshare-w19.herokuapp.com/
 
 ### Functionality
 TODO: Write usage instructions. Structuring it as a walkthrough can help structure this section, and showcase your features.
