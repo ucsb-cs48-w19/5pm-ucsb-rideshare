@@ -1,3 +1,6 @@
+# node js modules
+node_modules/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -104,12 +107,14 @@ venv.bak/
 .mypy_cache/
 
 
+
 .DS_Store
 
 # Ignore all node_modules
 /node_modules/*
 
-# Ignore all bower_components
-/static/bower_components/* 
+npm-debug.log
+
+/*.env
 
 
