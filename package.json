@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "ucsb-rideshare",
   "version": "1.0.0",
   "description": "A rideshare app for UCSB students.",
@@ -22,4 +23,24 @@
   "engines": {
     "node": "11.x"
   }
+=======
+  "name": "ucsb-rideshare-w19",
+  "version": "1.0.0",
+  "description": "Make sure to check out the repo anew (potentially on a loaned laptop) and test your installation instructions.",
+  "main": "cette_hello/helloWorldColette.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node colette_hello/helloWorldColette.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ucsb-cs48-w19/5pm-ucsb-rideshare.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ucsb-cs48-w19/5pm-ucsb-rideshare/issues"
+  },
+  "homepage": "https://github.com/ucsb-cs48-w19/5pm-ucsb-rideshare#readme"
+>>>>>>> 1323600a86175f76d72a72f5a3bb647dfc20904d
 }
