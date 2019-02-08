@@ -25,7 +25,7 @@ User must have the most current version of node.js installed on their machine as
 
 ### Installation Steps
 To install node.js go to nodejs.org and follow the website's installation instructions. <br>
-After forking the repo open a terminal window, navigate to 5pm-ucsb-rideshare/rideshare-app and type the following lines into your terminal: <br> 
+After forking the repo open a terminal window, navigate to the root of the repo and type the following lines into your terminal: <br> 
 npm install <br>
 npm install -g bower <br>
 bower install bootstrap <br> 
