@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const db = include("../config/database.js");
-const Ride = include("../models/Ride.js");
+const db = require("../config/database.js");
+const Ride = require("../models/Ride.js");
 
 // Since we're using router the / refers to /rides
 router.get("/", function(request, response) {
