@@ -50,6 +50,16 @@ app.use("/static/css", express.static(path.join(__dirname, "node_modules/bootstr
 // Middleware for bodyparser
 app.use(bodyParser.urlencoded({extended: false}));
 
+// Test user in session
+function isAuthed(req,res,next){
+    if(req.user){
+	next();
+    }
+    else
+    {
+	res.redirect('/auth');
+    }
+}
 
 // Home route
 app.get("/", function(request, response) {
@@ -61,9 +71,10 @@ app.get("/callback", oauth.authenticate("google", {failureRedirect: "/"}),
 		response.redirect("/");
 });
 
+app.get('/auth',oauth.authenticate('google',{scope:['profile']}));
 
 // Setting routes for rides
-app.use("/rides", oauth.authenticate("google", {scope: ["https://www.googleapis.com/auth/plus.login"]}), require("./routes/rides"));
+app.use("/rides", isAuthed, require("./routes/rides"));
 
 
 const PORT = process.env.PORT || 5000;
