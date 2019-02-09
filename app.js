@@ -52,7 +52,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 // Test user in session
 function isAuthed(req,res,next){
-    if(req.session.passport&&req.session.passport.user){
+    if(req.user){
 	next();
     }
     else
