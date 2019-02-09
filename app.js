@@ -4,14 +4,8 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const secret = require("./config/secret.js");
 const oauth = require("./config/oauth.js");
-
-var session = require("express-session"),
-    bodyParser = require("body-parser");
-
-app.use(session({ secret:secret }));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(passport.initialize());
-app.use(passport.session());
+const passport = require("passport");
+const session = require("express-session");
 
 // Requiring the database
 const db = require("./config/database.js");
@@ -28,6 +22,14 @@ db.authenticate()
 
 // Initialize the express variable for routes
 const app = express();
+
+
+app.use(session({ secret:secret }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 
 // Setting up the template engine
 app.engine("handlebars", expHandlebars({defaultLayout: "main"}));
