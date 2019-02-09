@@ -11,7 +11,7 @@ passport.use(new GoogleStrategy({
     callbackURL: "https://ucsb-rideshare-w19.herokuapp.com/callback"
   },
   function(token, tokenSecret, profile, done) {
-  	done();    
+  	done(null,profile);    
   })
 );
 
