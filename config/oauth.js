@@ -12,7 +12,7 @@ passport.use(new GoogleStrategy({
   },
   function(token, tokenSecret, profile, done) {
   	done();    
-  });
+  })
 );
 
 module.exports = passport;
