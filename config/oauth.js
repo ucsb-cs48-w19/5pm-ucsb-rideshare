@@ -11,11 +11,9 @@ passport.use(new GoogleStrategy({
     callbackURL: "https://ucsb-rideshare-w19.herokuapp.com/callback"
   },
   function(token, tokenSecret, profile, done) {
-      User.findOrCreate({ googleId: profile.id }, function (err, user) {
-        return done(err, user);
-      });
-  }
-));
+  	done();    
+  });
+);
 
 module.exports = passport;
 
