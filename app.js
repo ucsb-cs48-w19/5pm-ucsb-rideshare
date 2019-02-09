@@ -63,7 +63,7 @@ app.get("/callback", passport.authenticate("google", {failureRedirect: "/"}),
 
 
 // Setting routes for rides
-app.use("/rides", passport.authenticate("google", {scope: ["https://www.googleapis.com/auth/plus.login"]}), require("./routes/rides"));
+app.use("/rides", require("./routes/rides"));
 
 
 const PORT = process.env.PORT || 5000;
