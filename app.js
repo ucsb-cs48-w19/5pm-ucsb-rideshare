@@ -2,6 +2,16 @@ const express = require("express");
 const expHandlebars = require("express-handlebars");
 const bodyParser = require("body-parser");
 const path = require("path");
+const secret = require("./config/secret.js");
+const oauth = require("./config/oauth.js");
+
+var session = require("express-session"),
+    bodyParser = require("body-parser");
+
+app.use(session({ secret:secret }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Requiring the database
 const db = require("./config/database.js");
@@ -44,9 +54,14 @@ app.get("/", function(request, response) {
 	response.render("index");
 });
 
+app.get("/callback", passport.authenticate("google", {failureRedirect: "/"}), 
+	function(request, response) {
+		response.redirect("/");
+});
+
 
 // Setting routes for rides
-app.use("/rides", require("./routes/rides"));
+app.use("/rides", passport.authenticate("google", {scope: ["https://www.googleapis.com/auth/plus.login"]}), require("./routes/rides"));
 
 
 const PORT = process.env.PORT || 5000;
