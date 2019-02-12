@@ -29,6 +29,10 @@ router.get("/google/callback", passport.authenticate("google"), function(request
 	response.redirect("/profile");
 });
 
+// Privacy policy page (required by facebook for login) 
+router.get("/privacy-policy", function(request, response) {
+	response.render("privacy-policy");
+});
 
 
 

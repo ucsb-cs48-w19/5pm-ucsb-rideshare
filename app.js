@@ -71,6 +71,7 @@ app.get("/", function(request, response) {
 	});
 });
 
+
 // Setting routes for rides
 app.use("/rides", require("./routes/rides"));
 
@@ -79,7 +80,6 @@ app.use("/auth", require("./routes/auth"));
 
 // Setting routes for profile
 app.use("/profile", require("./routes/profile"));
-
 
 
 
