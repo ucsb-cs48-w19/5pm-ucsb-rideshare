@@ -1,14 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../config/database.js");
-const Ride = require("../models/Ride.js");
+const models = require("../models/index.js");
+const authCheck = require("../authCheck.js");
 
 // Since we're using router the / refers to /rides
 router.get("/", function(request, response) {
-	Ride.findAll() 
+	models.Ride.findAll() 
 		.then(function(rides) {
 			response.render("rides", {
-				rides:rides
+				rides:rides,
+				user: request.user
 			});
 		})
 		.catch(function(err) {
@@ -16,13 +17,15 @@ router.get("/", function(request, response) {
 		})
 });
 
-router.get("/add", function(request, response) {
-	response.render("add_rides");
+router.get("/add", authCheck, function(request, response) {
+	response.render("add_rides", {
+		user: request.user
+	});
 });
 
-router.post("/add", function(request, response) {
+router.post("/add", authCheck, function(request, response) {
 	let {name, contact_email, origin, destination, date, time, number_of_seats, price, message} = request.body
-	Ride.create({
+	models.Ride.create({
 		name:name,
 		contact_email:contact_email,
 		origin:origin,
@@ -34,6 +37,7 @@ router.post("/add", function(request, response) {
 		message:message
 	})
 	.then(function() {
+		// Redirects don't need the request.user passed in but all renders do.
 		response.redirect("/rides");
 	})
 	.catch(function(err) {
