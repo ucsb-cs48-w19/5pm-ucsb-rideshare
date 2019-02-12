@@ -17,7 +17,7 @@ router.get("/facebook", passport.authenticate("facebook", {
 	scope: ["email"]
 }));
 
-router.get("/facebook/callback", passport.authenticate("google"), function(request, response) {
+router.get("/facebook/callback", passport.authenticate("facebook"), function(request, response) {
 	response.redirect("/profile");
 });
 
