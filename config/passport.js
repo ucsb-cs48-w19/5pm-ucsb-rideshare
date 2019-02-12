@@ -1,5 +1,6 @@
 const passport = require("passport");
 const FacebookStrategy = require("passport-facebook");
+const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy
 const models = require("../models/index.js");
 
 if(!process.env.DATABASE_URL) {
@@ -41,6 +42,27 @@ passport.use(
 
 	})
 );
+
+
+passport.use(
+	new GoogleStrategy({
+		clientID: process.env.GOOGLE_CLIENT_ID || keys.google.clientID,
+		clientSecret: process.env.GOOGLE_CLIENT_SECRET || keys.google.clientSecret,
+		callbackURL: process.env.GOOGLE_CALLBACK_URL || keys.google.callbackURL
+	}, 
+	function(token, tokenSecret, profile, done) {
+		// note: there could be id conflicts with the facebook id's using this method.
+		models.User.findOrCreate({where: {user_id:profile.id}, defaults: {
+			username:profile.username, 
+			display_name:profile.displayName,
+		}})
+		.spread(function(user, created) {
+			return done(null, user);
+		})
+	})
+);
+
+
 
 module.exports = passport;
 
