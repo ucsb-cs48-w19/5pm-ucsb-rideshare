@@ -1,0 +1,20 @@
+<section id="rides" class="container">
+	<h1>Available Rides</h1>
+
+	{{#each rides}}
+
+	<div class="ride">
+		<h3>From {{origin}} To {{destination}}</h3> 
+	</div>
+	<ul style="color:White">
+		<li>{{time}} {{date}}</li>
+		<li>Seats Available: {{number_of_seats}}</li>
+		<li>Price: {{price}}</li>
+		<li>{{message}}</li>
+		<li><a style="color:White" href="mailto:{{contact_email}}" class="btn">message {{name}}</a></li> 
+	</ul>
+
+	{{else}}
+		<p>No rides to list</p>
+	{{/each}}
+</section> 

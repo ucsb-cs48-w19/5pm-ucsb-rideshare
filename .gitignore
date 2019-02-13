@@ -102,3 +102,15 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+
+.DS_Store
+
+# Ignore all node_modules
+/rideshare_app/node_modules/*
+node_modules/*
+
+# Ignore all bower_components
+/rideshare_app/static/bower_components/* 
+
+
