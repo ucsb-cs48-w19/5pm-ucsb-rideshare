@@ -17,7 +17,7 @@ router.get("/facebook", passport.authenticate("facebook", {
 	scope: ["email"]
 }));
 
-router.get("/facebook/callback", passport.authenticate("facebook"), function(request, response) {
+router.get("/facebook/callback", passport.authenticate("facebook", {failureRedirect: "/"}), function(request, response) {
 	response.redirect("/profile");
 });
 
@@ -25,7 +25,7 @@ router.get("/google", passport.authenticate("google", {
 	scope: ["profile"]
 }));
 
-router.get("/google/callback", passport.authenticate("google"), function(request, response) {
+router.get("/google/callback", passport.authenticate("google", {failureRedirect: "/"}), function(request, response) {
 	response.redirect("/profile");
 });
 
