@@ -1,20 +1,35 @@
-<section id="rides" class="container">
-	<h1>Available Rides</h1>
+
+  <section id="rides" class="container">
 
 	{{#each rides}}
+	<div class="w-100 p-3" style="background-color: rgba(255, 255, 255, .6); width: 18rem;">
 
 	<div class="ride">
-		<h3>From {{origin}} To {{destination}}</h3> 
-	</div>
-	<ul style="color:White">
-		<li>{{time}} {{date}}</li>
-		<li>Seats Available: {{number_of_seats}}</li>
-		<li>Price: {{price}}</li>
-		<li>{{message}}</li>
-		<li><a style="color:White" href="mailto:{{contact_email}}" class="btn">message {{name}}</a></li> 
-	</ul>
+	<h3 align="center">From {{origin}} to {{destination}}</h3> 
+		</div>
+		<ul style="list-style: none">
+			<li>Posted by {{name}}</li>
+			<br>
+			<li>Time: {{time}}</li>
+			<li>Date: {{date}}</li>
+			<li>Seats Available: {{number_of_seats}}</li>
+			<li>Price: ${{price}} per person</li>
+			<br>
+			<li>
+				<a href="mailto:{{contact_email}}" class="btn btn-dark">Message {{name}}</a>
+			</li> 
+		</ul>
+		<ul>
+			<li style="list-style: none">
+				<p>{{message}}</p>
+			</li>
+		</ul>
+		</div>
+		<br>
+		{{else}}
+			<div class="w-100 p-3" style="background-color: rgba(255, 255, 255, .4);">
+			<p>No rides to list</p>
+		</div>
+		{{/each}}
+  </section> 
 
-	{{else}}
-		<p>No rides to list</p>
-	{{/each}}
-</section> 
