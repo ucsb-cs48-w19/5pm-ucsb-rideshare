@@ -33,7 +33,6 @@ passport.use(
 		profileFields: ['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified']
 	},
 	function(accessToken, refreshToken, profile, done) {
-		console.log(profile)
 		models.User.findOrCreate({where: {user_id:profile.id}, defaults: {
 			first_name:profile.name.givenName,
 			last_name:profile.name.familyName,
@@ -56,7 +55,6 @@ passport.use(
 		callbackURL: process.env.GOOGLE_CALLBACK_URL || keys.google.callbackURL
 	}, 
 	function(token, tokenSecret, profile, done) {
-		console.log(profile)
 		// note: there could be id conflicts with the facebook id's using this method.
 		models.User.findOrCreate({where: {user_id:profile.id}, defaults: {
 			first_name:profile.name.givenName,
