@@ -45,6 +45,8 @@ app.use("/static/js", express.static(path.join(__dirname, "node_modules/bootstra
 app.use("/static/js", express.static(path.join(__dirname, "node_modules/jquery/dist")));
 // Redirect bootstrap css
 app.use("/static/css", express.static(path.join(__dirname, "node_modules/bootstrap/dist/css")));
+// Redirect font-awesome css
+app.use("/static/css", express.static(path.join(__dirname, "node_modules/font-awesome/css")));
 
 
 // Middleware for bodyparser

@@ -2,3 +2,38 @@ body {
 	background: url('../images/background.jpg') no-repeat fixed;
     background-size: cover;
 }
+
+
+.top-buffer { margin-top: 60px;}
+
+body {
+    padding-bottom: 100px;
+}
+
+#errors {
+  display: table;
+  margin: auto;
+}
+#errors > li {
+  display: block;
+}
+
+
+
+&.fa-facebook {
+	color: #3b5998;
+}
+&.fa-facebook-official {
+	color: #3b5998;
+}
+&.fa-facebook-square {
+	color: #3b5998;
+}
+
+@fa-facebook-official: @fa-facebook;
+@fa-facebook-square: @fa-facebook;
+@fa-facebook: #3b5998;
+
+
+
+
