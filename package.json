@@ -15,13 +15,18 @@
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
+<<<<<<< HEAD
     "handlebars": "^4.1.0",
+=======
+    "font-awesome": "^4.7.0",
+>>>>>>> 1a52747135ba89258a7a62aa6ce1c77488fd110a
     "jquery": "^3.3.1",
     "passport": "^0.4.0",
     "passport-facebook": "^3.0.0",
     "passport-google-oauth": "^1.0.0",
     "pg": "^7.8.0",
     "pg-hstore": "^2.3.2",
+    "popper.js": "^1.14.7",
     "sequelize": "^4.42.0"
   },
   "engines": {

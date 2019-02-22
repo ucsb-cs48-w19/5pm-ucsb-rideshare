@@ -3,7 +3,8 @@
 <head>
 	<title>UCSB Rideshare</title>
 	<link rel="stylesheet" href="/css/style.css">
-	<link rel = "stylesheet", href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -14,19 +15,23 @@
 	  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 	    <div class="navbar-nav">
 	      <a class="nav-item nav-link active" href="/">Home<span class="sr-only">(current)</span></a>
-	      <a class="nav-item nav-link" href="/rides">Rides</a>
-	      <a class="nav-item nav-link" href="/rides/add">Add Ride</a>
+	      <a class="nav-item nav-link active" href="/rides">Rides</a>
+	      <a class="nav-item nav-link active" href="/rides/add">Add Ride</a>
 	      {{#if user}}
-		  	  <a class="nav-item nav-link" href="/profile">Profile</a>
-		      <a class="nav-item nav-link" href="/auth/logout">Logout</a>
+		  	  <a class="nav-item nav-link active" href="/profile">Profile</a>
+		      <a class="nav-item nav-link active" href="/auth/logout">Logout</a>
 		  {{else}}
-	      	  <a class="nav-item nav-link" href="/auth/login">Login</a>
+	      	  <a class="nav-item nav-link active" href="/auth/login">Login</a>
 	      {{/if}}
 	    </div>
 	  </div>
 	</nav>
 	<div class="container">
-	{{{body}}}
+
+	<div class="row top top-buffer">
+		{{{body}}}
+	</div>
+
 	</div>
 	<script src="/static/js/jquery.min.js"></script>
 	<script src="/static/js/bootstrap.min.js"></script>

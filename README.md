@@ -1,4 +1,5 @@
-# 5pm-ucsb-rideshare
+# 5pm-ucsb-rideshare 
+[![Build Status](https://travis-ci.com/romanova2/5pm-ucsb-rideshare.svg?branch=master)](https://travis-ci.com/romanova2/5pm-ucsb-rideshare)
 
 Make sure to check out the repo anew (potentially on a loaned laptop) and test your installation instructions.
 

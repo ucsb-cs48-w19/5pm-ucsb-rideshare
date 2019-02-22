@@ -29,12 +29,16 @@ passport.use(
 	new FacebookStrategy({
 		clientID: process.env.FACEBOOK_CLIENT_ID || keys.facebook.clientID,
 		clientSecret: process.env.FACEBOOK_CLIENT_SECRET || keys.facebook.clientSecret,
-		callbackURL: process.env.FACEBOOK_CALLBACK_URL || keys.facebook.callbackURL
+		callbackURL: process.env.FACEBOOK_CALLBACK_URL || keys.facebook.callbackURL,
+		profileFields: ['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified']
 	},
 	function(accessToken, refreshToken, profile, done) {
 		models.User.findOrCreate({where: {user_id:profile.id}, defaults: {
+			first_name:profile.name.givenName,
+			last_name:profile.name.familyName,
 			username:profile.username, 
 			display_name:profile.displayName,
+			email:profile.emails[0].value,
 		}})
 		.spread(function(user, created) {
 			return done(null, user);
@@ -53,8 +57,11 @@ passport.use(
 	function(token, tokenSecret, profile, done) {
 		// note: there could be id conflicts with the facebook id's using this method.
 		models.User.findOrCreate({where: {user_id:profile.id}, defaults: {
+			first_name:profile.name.givenName,
+			last_name:profile.name.familyName,
 			username:profile.username, 
 			display_name:profile.displayName,
+			email:profile.emails[0].value,
 		}})
 		.spread(function(user, created) {
 			return done(null, user);

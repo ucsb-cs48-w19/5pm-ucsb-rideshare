@@ -14,18 +14,18 @@ router.get("/logout", authCheck, function(request, response) {
 
 router.get("/facebook", passport.authenticate("facebook", {
 	// Scope automatically includes profile info. email is extra
-	scope: ["email"]
+	scope:['public_profile', 'email']
 }));
 
-router.get("/facebook/callback", passport.authenticate("facebook"), function(request, response) {
+router.get("/facebook/callback", passport.authenticate("facebook", {failureRedirect: "/"}), function(request, response) {
 	response.redirect("/profile");
 });
 
 router.get("/google", passport.authenticate("google", {
-	scope: ["profile"]
+	scope: ["profile", "email"]
 }));
 
-router.get("/google/callback", passport.authenticate("google"), function(request, response) {
+router.get("/google/callback", passport.authenticate("google", {failureRedirect: "/"}), function(request, response) {
 	response.redirect("/profile");
 });
 
