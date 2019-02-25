@@ -19,7 +19,7 @@ An app to help UCSB students coordinate carpools.
 An app dedicated to facilitating shared rides and carpools as painlessly as possible. Drivers can post rides with a user friendly and flexible form, and riders can quickly find rides that suit their needs with a filtered search! Designed for those who are tired of scrolling through endless facebook posts in search of a ride that suits their needs. 
 
 ### Installation Requirements
-Must have most current version of [https://nodejs.org/en/node.js](node.js) and [https://www.postgresql.org/ftp/pgadmin/pgadmin4/v4.1/macos/postgreSQL](postgreSQL) to run locally. 
+Must have most current version of [node.js](https://nodejs.org/en/node.js) and [postgreSQL](https://www.postgresql.org/ftp/pgadmin/pgadmin4/v4.1/macos/postgreSQL) to run locally. 
 
 ### Installation Steps
 To install node.js go to nodejs.org and follow the website's installation instructions. <br>
