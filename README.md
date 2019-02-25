@@ -1,5 +1,5 @@
 # 5pm-ucsb-rideshare 
-[![Build Status](https://travis-ci.com/romanova2/5pm-ucsb-rideshare.svg?branch=master)](https://travis-ci.com/romanova2/5pm-ucsb-rideshare)
+[![Build Status](https://travis-ci.com/ucsb-cs48-w19/5pm-ucsb-rideshare.svg?branch=master)](https://travis-ci.com/ucsb-cs48-w19/5pm-ucsb-rideshare)
 
 ### UCSB RIDESHARE
 An app to help UCSB students coordinate carpools. 
