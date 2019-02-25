@@ -22,7 +22,7 @@ An app dedicated to facilitating shared rides and carpools as painlessly as poss
 
 ### Installation
 Prerequisites:
-User must have the most current version of node.js installed on their machine.
+User must have the most current version of node.js and postgreSQL installed on their machine.
 
 ### Installation Steps
 To install node.js go to nodejs.org and follow the website's installation instructions. <br>
