@@ -66,10 +66,7 @@ The main functionaly of this webapp is to provide students with a way to arrange
 ### Known Problems
 No known issues.
 
-### Contributing
-TODO: Leave the steps below if you want others to contribute to your project.
-
-### Fork it!
+### Fork it & contribute! 
 Create your feature branch: git checkout -b my-new-feature
 Commit your changes: git commit -am 'Add some feature'
 Push to the branch: git push origin my-new-feature
