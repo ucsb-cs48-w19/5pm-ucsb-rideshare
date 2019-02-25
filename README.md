@@ -71,5 +71,5 @@ Push to the branch: git push origin my-new-feature
 Submit a pull request :D
 
 ### License
-see LICENSE.txt
+see [LICENSE](LICENSE)
     
