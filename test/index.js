@@ -14,7 +14,7 @@ describe('HelloWorld Module', function() {
   });
 });
 
-desctibe('Connect to database', function() {
+describe('Connect to database', function() {
   it('should connect successfully', function(done){
 	 sequelize.authenticate().then(()=>done()).catch(err=>done(err));
   });
