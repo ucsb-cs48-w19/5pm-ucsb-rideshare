@@ -117,7 +117,7 @@ app.get('/', function (req, res, next) {
 
 const PORT = process.env.PORT || 5000;
 
-models.db.sync({force:true}).then(function() {
+models.db.sync().then(function() {
 	app.listen(PORT, function() {
 		console.log(`Server started on port ${PORT}`);
 	});
