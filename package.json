@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "test": "mocha test"
+    "test": "mocha test --exit"
   },
   "author": "Brandon, Colette, Sasha, Sihua, Sam",
   "license": "MIT",
