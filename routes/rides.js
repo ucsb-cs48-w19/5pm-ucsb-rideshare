@@ -71,20 +71,24 @@ router.post("/add", authCheck, function(request, response) {
 			message:message
 		});
 	} else {
-		models.Ride.create({
-			name:name,
-			contact_email:contact_email,
-			origin:origin,
-			destination:destination,
-			date:date,
-			time:time,
-			number_of_seats:number_of_seats,
-			price:price, 
-			message:message
-		})
-		.then(function() {
-			// Redirects don't need the request.user passed in but all renders do.
-			response.redirect("/rides");
+		models.User.findOne({where: {user_id:request.user.user_id}})
+			.then(function(user) {
+				// We can use the user we just found to make a new Ride and because of the associations
+				// set up in index.js the primaryKey of the user will be pointed to by the foreign key 
+				// of the new ride automatically.
+				user.createRide({
+					name:name,
+					contact_email:contact_email,
+					origin:origin,
+					destination:destination,
+					date:date,
+					time:time,
+					number_of_seats:number_of_seats,
+					price:price, 
+					message:message
+				})
+				// Redirects don't need the request.user passed in but all renders do.
+				response.redirect("/rides");
 		})
 		.catch(function(err) {
 			console.log(err);
@@ -95,8 +99,15 @@ router.post("/add", authCheck, function(request, response) {
 
 
 router.get("/my_rides", authCheck, function(request, response) {
-	response.render("my_rides", {
-		user:request.user,
+	models.Ride.findAll( {where: {userId: request.user.id}})
+	.then(function(rides) {
+		response.render("my_rides", {
+			user:request.user,
+			rides:rides
+		})
+	})
+	.catch(function(err) {
+		console.log(err);
 	})
 });
 

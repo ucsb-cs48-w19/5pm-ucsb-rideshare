@@ -28,7 +28,7 @@ const Ride = db.define("ride", {
 	},
 	message: {
 		type: Sequelize.Sequelize.STRING
-	}
+	}, 
 });
 
 module.exports = Ride;
