@@ -1,7 +1,7 @@
 var assert = require('assert');
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('travis_ci_test','postgres','',{
+const sequelize = new Sequelize('travis_ci_test','postgres',' ',{
 	dialect: 'postgres'
 })
 
