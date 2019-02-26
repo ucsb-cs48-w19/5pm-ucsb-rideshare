@@ -8,9 +8,9 @@ const passport = require ("passport");
 const session = require("express-session");
 const models = require("./models/index");
 if(!process.env.DATABASE_URL) {
-	//We are running on local host and must use the information in a file called 
-	// keys.js in the config directory (see the readme about how to create the 
-	// keys.js file). 
+	//We are running on local host and must use the information in a file called
+	// keys.js in the config directory (see the readme about how to create the
+	// keys.js file).
 	var keys = require("./config/keys");
 }
 
@@ -28,10 +28,6 @@ models.db.authenticate()
 // Initialize the express variable for routes
 const app = express();
 
-
-// Setting up the template engine
-app.engine("handlebars", expHandlebars({defaultLayout: "main"}));
-app.set("view engine", "handlebars");
 
 
 // // Setting static folder for css and images
@@ -53,7 +49,7 @@ app.use("/static/css", express.static(path.join(__dirname, "node_modules/font-aw
 app.use(bodyParser.urlencoded({extended: false}));
 
 // Middleware to enagle sessions
-app.use(session({ 
+app.use(session({
 	secret: process.env.SESSION_SECRET || keys.sessionSecret.secret,
 	maxAge: 24 * 60 * 60 * 1000,
 	resave: false,
@@ -83,6 +79,40 @@ app.use("/auth", require("./routes/auth"));
 // Setting routes for profile
 app.use("/profile", require("./routes/profile"));
 
+var hbs = expHandlebars.create({
+	defaultLayout: 'main',
+	helpers: {
+		shortDate: function(myDate){return myDate.toDateString();},
+		shortTime: function(myTime){
+			var min = myTime.slice(3,5);
+			var hour = parseInt(myTime.slice(0,2));
+			if (hour>12){
+				hour=hour-12;
+				min+=" pm";
+			}else{
+				min+=" am";
+			}
+
+			return hour+":"+min;
+		}
+	}
+});
+
+// Setting up the template engine
+//app.engine("handlebars", expHandlebars({defaultLayout: "main"}));
+app.engine('handlebars', hbs.engine);
+app.set("view engine", "handlebars");
+
+app.get('/', function (req, res, next) {
+    res.render('rides', {
+        showTitle: true,
+
+        // Override `foo` helper only for this rendering.
+        helpers: {
+            foo: function () { return 'foo.'; }
+        }
+    });
+});
 
 
 const PORT = process.env.PORT || 5000;
