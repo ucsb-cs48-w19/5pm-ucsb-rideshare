@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "test": "mocha test --exit"
   },
   "author": "Brandon, Colette, Sasha, Sihua, Sam",
   "license": "MIT",
@@ -17,6 +18,7 @@
     "express-session": "^1.15.6",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
+    "mocha": "^6.0.2",
     "passport": "^0.4.0",
     "passport-facebook": "^3.0.0",
     "passport-google-oauth": "^1.0.0",
