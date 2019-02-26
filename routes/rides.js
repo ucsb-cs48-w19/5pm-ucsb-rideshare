@@ -129,12 +129,126 @@ router.get("/search", function(request, response) {
 });
 
 
+router.get("/edit/:id", authCheck, function(request, response) {
+	// request.params.id refers to the id of the Ride not the user.
+	models.Ride.findByPk(request.params.id)
+	.then(function(ride) {
+		response.render("edit_ride", {
+			user:request.user,
+			id:ride.id,
+			name:ride.name,
+			contact_email:ride.contact_email,
+			origin:ride.origin,
+			destination:ride.destination,
+			date:ride.date,
+			time:ride.time,
+			number_of_seats:ride.number_of_seats,
+			price:ride.price, 
+			message:ride.message,
+		});
+	})
+	.catch(function(err) {
+		console.log(err);
+	})
+
+});
+
+
+router.post("/edit/:id", authCheck, function(request, response) {
+
+	let {id, name, contact_email, origin, destination, date, time, number_of_seats, price, message} = request.body
+	let errors = [];
+
+	if(!name) {
+		errors.push({text: "Please add a name"});
+	}
+	if(!contact_email) {
+		errors.push({text: "Please add an email"})
+	}
+	if(!origin) {
+		errors.push({text: "Please add a start location"});
+	}
+	if(!destination) {
+		errors.push({text: "Please add a destination"});
+	}
+	if(!date) {
+		errors.push({text: "Please add a date"});
+	}
+	if(!time) {
+		errors.push({text: "Please add a time"});
+	}
+	if(!number_of_seats) {
+		errors.push({text: "Please add the number of seats"});
+	}
+	if(!price) {
+		errors.push({text: "Please add the price"});
+	}
+	// Might be a good idea to also add type checks too. Especially for
+	// dates and times.
+	if(errors.length > 0) {
+
+		response.render("edit_ride", {
+			user:request.user,
+			errors:errors,
+			id:request.params.id,
+			name:name,
+			contact_email:contact_email,
+			origin:origin,
+			destination:destination,
+			date:date,
+			time:time,
+			number_of_seats:number_of_seats,
+			price:price, 
+			message:message
+		});
+	} else {
+		models.Ride.update({
+			name:name,
+			contact_email:contact_email,
+			origin:origin,
+			destination:destination,
+			date:date,
+			time:time,
+			number_of_seats:number_of_seats,
+			price:price, 
+			message:message
+		}, {where: {id:request.params.id}})
+		.then(function(ride) {
+			response.redirect("/rides/my_rides");
+		})
+		.catch(function(err) {
+			console.log(err);
+		})
+	}
+});
 
 
 
+router.get("/delete/:id", authCheck, function(request, response) {
+	response.render("delete_verification", {
+		user:request.user,
+		id:request.params.id,
+	});
+});
 
+
+router.delete("/delete/:id", authCheck, function(request, response){
+
+	models.Ride.destroy( {where: {id:request.params.id}})
+	.then(function() {
+		// send 200 status
+		response.send("Deletion was a success");
+	})
+	.catch(function(err) {
+		console.log(err);
+	})
+});
 
 
 
 
 module.exports = router;
+
+
+
+
