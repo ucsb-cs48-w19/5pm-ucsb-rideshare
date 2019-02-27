@@ -1,5 +1,5 @@
 # 5pm-ucsb-rideshare 
-[![Build Status](https://travis-ci.com/romanova2/5pm-ucsb-rideshare.svg?branch=master)](https://travis-ci.com/romanova2/5pm-ucsb-rideshare)
+[![Build Status](https://travis-ci.org/ucsb-cs48-w19/5pm-ucsb-rideshare.svg?branch=master)](https://travis-ci.org/ucsb-cs48-w19/5pm-ucsb-rideshare)
 
 Make sure to check out the repo anew (potentially on a loaned laptop) and test your installation instructions.
 
@@ -20,12 +20,10 @@ An app to help UCSB students coordinate carpools.
 ### Additional information about the project
 An app dedicated to facilitating shared rides and carpools as painlessly as possible. Drivers can post rides with a user friendly and flexible form, and riders can quickly find rides that suit their needs with a filtered search! Designed for those who are tired of scrolling through endless facebook posts in search of a ride that suits their needs. 
 
-### Installation
-Prerequisites:
-User must have the most current version of node.js and postgreSQL installed on their machine.
+### Installation Requirements
+Must have most current version of [node.js](https://nodejs.org/en/node.js) and [postgreSQL](https://www.postgresql.org/ftp/pgadmin/pgadmin4/v4.1/macos/postgreSQL) to run locally. 
 
 ### Installation Steps
-To install node.js go to nodejs.org and follow the website's installation instructions. <br>
 After forking the repo open a terminal window, navigate to the root of the repo and type "npm install." <br>
 To run the app on localhost the user will also need to navigate to the "config" directory and create a file named "keys.js." Copy and paste the following snippet of code into the newly created file.
 ```   
@@ -66,15 +64,12 @@ The main functionaly of this webapp is to provide students with a way to arrange
 ### Known Problems
 No known issues.
 
-### Contributing
-TODO: Leave the steps below if you want others to contribute to your project.
-
-### Fork it!
+### Fork it & contribute! 
 Create your feature branch: git checkout -b my-new-feature
 Commit your changes: git commit -am 'Add some feature'
 Push to the branch: git push origin my-new-feature
 Submit a pull request :D
 
 ### License
-see LICENSE.txt
+see [LICENSE](LICENSE)
     

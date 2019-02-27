@@ -8,9 +8,19 @@ const models = {
 	Ride:Ride
 }
 
+// Associations
+// calling belogsTo() gives Ride a field of userId
 Ride.belongsTo(User, {
-	foreignKey: "owner"
-});
+	foreignKey:{
+		name: "userId",
+		allowNull: false,
+	}});
+User.hasMany(Ride, {
+	foreignKey:{
+		name: "userId",
+		allowNull: false,
+	}});
+
 
 models.db = db;
 models.Sequelize = Sequelize;
