@@ -2,18 +2,37 @@
 	<div class="w-100 p-3" style="background-color: rgba(255, 255, 255, .8);">
 	<h2 align="center">Search for a Ride</h2>
 
-		<form action="/rides/search" class="search-form">
+		<form action="/rides/search" class="search-form form-horizontal">
 		  
-		  <div class="form-group row" class="input-group">
-		    <div class="col-9">
-		      <input class="form-control rounded-0" name="term" id="term" placeholder="What city would you like to get a ride to?"></input>
-		    </div>
-		    <div class="col-3">
-		      <div class="form-check">
-		      <input type="checkbox" class="form-check-input" name="filter" id="filter"></input>
-		      <label for="filter" class="form-check-label">Enable filter</label>
-		      </div>
-		    </div>
+		  <div class="form-group form-row" class="input-group">
+		    <div class="col-lg-10">
+		    <input class="form-control rounded-0" name="term" id="term" placeholder="What city would you like to get a ride to?"></input>
+			</div>
+			<div class="col-lg-2" style="top:5px;">
+			   <div class="form-check" align="center">
+				  <input class="form-check-input" type="checkbox" id="filter" name="filter" style="margin-up: 10px; width: 19px; height:19px"></input>
+				  <label class="form-check-label form-control-md" for="filter" align="center">
+				     Enable Filter
+				  </label>
+				  
+			   </div>
+			</div>
+		  </div>
+		  <div id="filterEnabled">
+		  <div class="form-row">
+		  <div class="form-group col-md-4" >
+				<label for="inputdate">Date</label>
+				<input type="date" class="form-control rounded-0" id="inputdate" name="filterdate"></input>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputprice">Price</label>
+				<input type="number" class="form-control rounded-0" id="inputprice" name="filterprice"></input>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputtime">Time</label>
+				<input type="time" class="form-control rounded-0" id="inputtime" name="filtertime"></input>
+			</div>
+		  </div>
 		  </div>
 		  <div id="contactBtn" class="col-md-12 text-center">
 		    <button type="submit" text="center" class="btn btn-dark"> <i class="fa fa-search"></i> </button>       
@@ -22,7 +41,4 @@
 		</form>
 	</div>
 </section>
-
-
-
 
