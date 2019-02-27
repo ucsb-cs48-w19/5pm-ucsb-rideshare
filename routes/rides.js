@@ -3,11 +3,15 @@ const router = express.Router();
 const models = require("../models/index.js");
 const authCheck = require("../authCheck.js");
 const Sequelize = require("sequelize");
+const sortingFunctions = require("../sorting.js");
 
 // Since we're using router the / refers to /rides
 router.get("/", function(request, response) {
-	models.Ride.findAll() 
+	models.Ride.findAll({raw: true}) 
 		.then(function(rides) {
+
+			rides.sort(sortingFunctions.sortByDateTimePrice);
+
 			response.render("rides", {
 				rides:rides,
 				user: request.user
@@ -99,8 +103,11 @@ router.post("/add", authCheck, function(request, response) {
 
 
 router.get("/my_rides", authCheck, function(request, response) {
-	models.Ride.findAll( {where: {userId: request.user.id}})
+	models.Ride.findAll( {where: {userId: request.user.id}}, {raw:true})
 	.then(function(rides) {
+
+		rides.sort(sortingFunctions.sortByDateTimePrice);
+
 		response.render("my_rides", {
 			user:request.user,
 			rides:rides
