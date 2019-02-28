@@ -20,3 +20,17 @@ describe('Connect to database', function() {
   });
 });
      
+describe('Testing sorting method', function() {
+	it('should sort two different items', function(){
+		const sortingFunctions = require("../sorting.js");
+		var list=[];
+		var first = '01 Jan 2018 00:00:00 GMT';
+		var second = '04 Dec 2019 00:12:00 GMT';
+		var firstdate={date: first};
+		var seconddate={date: second};
+		list.push(firstdate);
+		list.push(seconddate);
+		list.sort(sortingFunctions.sortByDateTimePrice);
+		assert.equal(0,list.indexOf(firstdate));
+	});
+});
