@@ -1,6 +1,5 @@
 var assert = require('assert');
 const Sequelize = require('sequelize');
-var sortingFunc
 
 const sequelize = new Sequelize('travis_ci_test','postgres',' ',{
 	dialect: 'postgres'
