@@ -121,8 +121,10 @@ router.get("/my_rides", authCheck, function(request, response) {
 
 router.get("/search", function(request, response) {
 
-	let {term} = request.query
-
+	let {term, filter} = request.query;
+	
+	if(!filter)
+	{
 	models.Ride.findAll( {where: {destination: { [Sequelize.Op.like]: "%" + term + "%" }}})
 	.then(function(rides) {
 		response.render("rides", {
@@ -133,6 +135,28 @@ router.get("/search", function(request, response) {
 	.catch(function(err) {
 		console.log(err);
 	})
+	}
+	else
+	{
+		let {filterdate, filterprice,filtertime}=request.query;
+		var condition={};
+		condition.destination={ [Sequelize.Op.like]: "%" + term + "%" };
+		if(filterdate)
+			condition.date={[Sequelize.Op.lte]: filterdate}
+		if(filterprice)
+			condition.price={[Sequelize.Op.lte]: filterprice}
+		if(filtertime)
+			condition.time={[Sequelize.Op.lte]: filtertime}
+		models.Ride.findAll({where: condition, raw: true})
+		.then(rides=>{
+			rides.sort(sortingFunctions.sortByDateTimePrice);
+			
+			response.render("rides",{
+				user:request.user,
+				rides:rides,
+			});
+		});
+	}
 });
 
 
