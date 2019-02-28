@@ -193,7 +193,6 @@ router.post("/edit/:id", authCheck, function(request, response) {
 	// Might be a good idea to also add type checks too. Especially for
 	// dates and times.
 	if(errors.length > 0) {
-
 		response.render("edit_ride", {
 			user:request.user,
 			errors:errors,
