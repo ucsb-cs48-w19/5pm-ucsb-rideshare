@@ -82,18 +82,32 @@ app.use("/profile", require("./routes/profile"));
 var hbs = expHandlebars.create({
 	defaultLayout: 'main',
 	helpers: {
-		shortDate: function(myDate){return myDate.toDateString();},
+		shortDate: function(myDate){
+			// Ensures that myDate is of type date (myDate may enter this function as a string
+			// in some instances).
+			myDate = new Date(myDate)
+			return myDate.toDateString();
+		},
 		shortTime: function(myTime){
-			var min = myTime.slice(3,5);
-			var hour = parseInt(myTime.slice(0,2));
-			if (hour>12){
-				hour=hour-12;
-				min+=" pm";
-			}else{
-				min+=" am";
+			// Check if myTime is already formatted. If it does do nothing.
+			if(myTime.match("^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9] am|pm$")) {
+  				return myTime;
+			} else {
+				var min = myTime.slice(3,5);
+				var hour = parseInt(myTime.slice(0,2));
+				if(hour == 0) {
+					hour = 12;
+					min+=" am";
+				} else if (hour == 12) {
+					min += " pm";
+				} else if (hour>12){
+					hour=hour-12;
+					min+=" pm";
+				}else{
+					min+=" am";
+				}
+				return hour+":"+min;
 			}
-
-			return hour+":"+min;
 		}
 	}
 });
