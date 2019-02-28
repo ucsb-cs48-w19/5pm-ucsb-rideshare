@@ -10,7 +10,7 @@
 			</div>
 			<div class="col-lg-2" style="top:5px;">
 			   <div class="form-check" align="center">
-				  <input class="form-check-input" onchange="showStuff(this)" type="checkbox" id="filter" name="filter" style="margin-up: 10px; width: 19px; height:19px"></input>
+				  <input class="form-check-input" onchange="showStuff(this)" type="checkbox" name="filter" id="filter" style="margin-up: 10px; width: 19px; height:19px"></input>
 				  <label class="form-check-label form-control-md" for="filter" align="center">
 				     Enable Filter
 				  </label>
@@ -21,15 +21,15 @@
 		  <div id="filterEnabled" style="display: none;">
 		  <div class="form-row">
 		  <div class="form-group col-md-4" >
-				<label for="inputdate">Date</label>
+				<label for="inputdate">Latest Date</label>
 				<input type="date" class="form-control rounded-0" id="inputdate" name="filterdate"></input>
 			</div>
 			<div class="form-group col-md-4">
-				<label for="inputprice">Price</label>
+				<label for="inputprice">Highest Price</label>
 				<input type="number" class="form-control rounded-0" id="inputprice" name="filterprice"></input>
 			</div>
 			<div class="form-group col-md-4">
-				<label for="inputtime">Time</label>
+				<label for="inputtime">Latest Time</label>
 				<input type="time" class="form-control rounded-0" id="inputtime" name="filtertime"></input>
 			</div>
 		  </div>
