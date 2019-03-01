@@ -32,7 +32,8 @@ const app = express();
 
 // // Setting static folder for css and images
 app.use(express.static(path.join(__dirname, "static")));
-
+app.use(express.static(path.join(__dirname,'public')));
+app.use(favicon(path.join(__dirname,'static','favicon.ico')));
 
 // Redirecting bootstrap and jquery files from node_modules directory to static
 // Redirect bootstrap js
@@ -57,7 +58,6 @@ app.use(session({
 	 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(favicon(path.join(__dirname, 'public' , 'favicon.ico')));
 
 
 
