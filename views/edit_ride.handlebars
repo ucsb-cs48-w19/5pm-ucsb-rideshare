@@ -2,8 +2,18 @@
 <section id="add_ride" class="container">
 <div class="form-wrap">
 
-<div class="w-100 p-3" style="background-color: rgba(255, 255, 255, .8);">
-<h2 align="center">Post a Ride</h2>
+<div class="w-100 p-3" style="background-color: rgba(255, 255, 255, .8);position:relative;z-index:2;">
+  <div id="formStart"class="w-100 p-3" style="background-color:rgb(131, 208, 208);width:100%;height:100%;top:0;left:0;position:absolute;z-index:1;">
+    <h2 align="center">Are you driving <b>from</b> or <b>to</b> Isla Vista/UCSB?</h2>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <button type="buton" id="fromButton" class="btn btn-primary btn-lg btn-block">Departing IV</button>
+        </div>
+        <div class="form-group col-md-6">
+          <button type="button" id="toButton" class="btn btn-primary btn-lg btn-block">Arriving in IV</button></div>
+      </div>
+  </div>
+<h2 align="center">Edit Your Ride</h2>
 
 <ul class="mx-auto rounded=0" id="errors" class="list-group">
 {{#each errors}}
@@ -12,7 +22,7 @@
 </ul>
 
 <form action="/rides/edit/{{id}}" method="POST">
-  
+
   <div class="form-row">
     <div class="form-group col-md-6" class="input-group">
       <label for="name">Name</label>
@@ -26,19 +36,34 @@
     </div>
   </div>
 
-  <div class="form-row">
-    <div class="form-group col-md-6" class="input-group">
+  <div id="locationRow"class="form-row">
+    <div id="leftDiv" class="form-group col-md-6" class="input-group">
       <label for="origin">Start Location</label>
-      <input type="text" class="form-control rounded-0" name="origin" id="origin" placeholder="Enter the city you will be driving from" maxlength="200" 
+			<select class="form-control rounded-0" name="origin" id="origin" placeholder="Enter the city you will be driving from" maxlength="200"
       value="{{origin}}">
+				<option value="SoCal">SoCal</option>
+				<option value="NorCal">NorCal</option>
+				<option value="Central California">Central California</option>
+
+			</select>
     </div>
 
-    <div class="form-group col-md-6" class="input-group">
+    <div id="rightDiv" class="form-group col-md-6" class="input-group">
       <label for="destination">Destination</label>
-      <input type="text" class="form-control rounded-0" name="destination" 
-      id="destination" placeholder="Enter the city you will be driving to" maxvalue="200" 
+      <select class="form-control rounded-0" name="destination"
+      id="destination" placeholder="Enter the city you will be driving to" maxvalue="200"
       value="{{destination}}">
+			<option value="SoCal">SoCal</option>
+			<option value="NorCal">NorCal</option>
+			<option value="Central California">Central California</option>
+
+		</select>
     </div>
+  </div>
+
+  <div class="form-group" class="input-group">
+    <label id="locationLabel" for="location">Where specifically are you going?</label>
+    <input type='text' class="form-control rounded-0" name="location" id="location" placeholder="Enter a specific city, drop-off point, etc."</input>
   </div>
 
   <div class="form-row">
@@ -49,7 +74,7 @@
 
     <div class="form-group col-md-6" class="input-group">
       <label for="time">Time</label>
-      <input type="time" class="form-control rounded-0" name="time" 
+      <input type="time" class="form-control rounded-0" name="time"
       id="time" placeholder="Time you will be driving" value="{{shortTime time}}">
     </div>
   </div>
@@ -64,7 +89,7 @@
 
     <div class="form-group col-md-6" class="input-group">
       <label for="price">Price</label>
-      <input type="number" class="form-control rounded-0" name="price" 
+      <input type="number" class="form-control rounded-0" name="price"
       id="price" placeholder="Price per person" min="0" value="{{price}}">
     </div>
   </div>
@@ -76,7 +101,7 @@
   <div class="form-row">
 
   <div id="contactBtn" class="col-md-12 text-center">
-    <button type="submit" text="center" class="btn btn-dark">Repost Ride</button>       
+    <button type="submit" text="center" class="btn btn-dark">Repost Ride</button>
   </div>
 
 </form>
@@ -84,4 +109,21 @@
 </section>
 
 </div>
+<script>
+	function depart(){
 
+		document.getElementById("leftDiv").innerHTML = "<label for 'origin'>Start Location</label><input type='text' class='form-control rounded-0' name='origin' id='origin' maxlength='200' placeholder='Isla Vista' value='Isla Vista' readonly>";
+		document.getElementById("formStart").style.display="none";
+
+	}
+	function arrive(){
+
+		document.getElementById("rightDiv").innerHTML = "<label for 'destination'>Destination</label><input type='text' class='form-control rounded-0' name='destination' id='destination' maxlength='200' placeholder='Isla Vista' value='Isla Vista' readonly>";
+		document.getElementById("formStart").style.display="none";
+		document.getElementById("locationLabel").innerHTML = "Where specifically are you coming from?";
+	}
+
+	document.getElementById("fromButton").addEventListener('click', depart);
+	document.getElementById("toButton").addEventListener('click', arrive);
+
+</script>
