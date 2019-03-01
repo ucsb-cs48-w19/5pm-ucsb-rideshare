@@ -59,6 +59,9 @@ router.post("/add", authCheck, function(request, response) {
 	if(!price) {
 		errors.push({text: "Please add the price"});
 	}
+	//change each of these to lowercase before adding to database so that they are easier to search for
+	//destination = destination.toLowerCase();
+	//origin = origin.toLowerCase();
 	// Might be a good idea to also add type checks too. Especially for
 	// dates and times.
 	if(errors.length > 0) {
@@ -125,12 +128,13 @@ router.get("/my_rides", authCheck, function(request, response) {
 
 
 router.get("/search", function(request, response) {
-
+	//set term to lower for searching properly
+	//term= term.toLowerCase();
 	let {term, filter} = request.query;
-	
+	term= term.toLowerCase();
 	if(!filter)
 	{
-	models.Ride.findAll( {where: {destination: { [Sequelize.Op.like]: "%" + term + "%" }}})
+	models.Ride.findAll( {where: {destination: { [Sequelize.Op.iLike]: "%" + term + "%" }}})
 	.then(function(rides) {
 		response.render("rides", {
 			user:request.user,
@@ -143,9 +147,12 @@ router.get("/search", function(request, response) {
 	}
 	else
 	{
-		let {filterdate, filterprice,filtertime}=request.query;
+		let {filterdate, filterprice,filtertime,filterdestination,filterstart}=request.query;
 		var condition={};
-		condition.destination={ [Sequelize.Op.like]: "%" + term + "%" };
+		condition.destination={ [Sequelize.Op.like]: "%" + filterdestination + "%" };
+		condition.origin={ [Sequelize.Op.like]: "%" + filterstart + "%" };
+		//if(filterdestination)
+			//condition.destination={[Sequelize.Op.iLike]: "%" + filterdestination + "%"}
 		if(filterdate)
 			condition.date={[Sequelize.Op.lte]: filterdate}
 		if(filterprice)
