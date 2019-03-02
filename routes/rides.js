@@ -46,6 +46,9 @@ router.post("/add", authCheck, function(request, response) {
 	if(!destination) {
 		errors.push({text: "Please add a destination"});
 	}
+	if(!location) {
+		errors.push({text: "Please add a specific location"});
+	}
 	if(!date) {
 		errors.push({text: "Please add a date"});
 	}
@@ -180,6 +183,9 @@ router.post("/edit/:id", authCheck, function(request, response) {
 	}
 	if(!destination) {
 		errors.push({text: "Please add a destination"});
+	}
+	if(!location) {
+		errors.push({text: "Please add a specific location"});
 	}
 	if(!date) {
 		errors.push({text: "Please add a date"});

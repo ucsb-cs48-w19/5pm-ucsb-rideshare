@@ -9,7 +9,7 @@
 		<h2 align="center">Are you driving <b>from</b> or <b>to</b> Isla Vista/UCSB?</h2>
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<button type="buton" id="fromButton" class="btn btn-primary btn-lg btn-block">Departing IV</button>
+					<button type="button" id="fromButton" class="btn btn-primary btn-lg btn-block">Departing IV</button>
 				</div>
 				<div class="form-group col-md-6">
 					<button type="button" id="toButton" class="btn btn-primary btn-lg btn-block">Arriving in IV</button></div>
@@ -104,6 +104,7 @@
   <div class="form-row">
 
   <div id="contactBtn" class="col-md-12 text-center">
+		<button type="button" id="backButton" class="btn btn-primary btn-dark">Go Back</button>
     <button type="submit" text="center" class="btn btn-dark">Post Ride</button>
   </div>
 
@@ -116,17 +117,25 @@
 	function depart(){
 
 		document.getElementById("leftDiv").innerHTML = "<label for 'origin'>Start Location</label><input type='text' class='form-control rounded-0' name='origin' id='origin' maxlength='200' placeholder='Isla Vista' value='Isla Vista' readonly>";
+		document.getElementById("rightDiv").innerHTML = "<label for='destination'>Destination</label><select class='form-control rounded-0' name='destination'id='destination' maxvalue='200' value='{{destination}}'><option value='SoCal'>SoCal</option><option value='NorCal'>NorCal</option><option value='Central California'>Central California</option></select>";
 		document.getElementById("formStart").style.display="none";
+		document.getElementById("locationLabel").innerHTML = "Where specifically are you going to?";
 
 	}
 	function arrive(){
 
 		document.getElementById("rightDiv").innerHTML = "<label for 'destination'>Destination</label><input type='text' class='form-control rounded-0' name='destination' id='destination' maxlength='200' placeholder='Isla Vista' value='Isla Vista' readonly>";
+		document.getElementById("leftDiv").innerHTML = "<label for='origin'>Start Location</label><select class='form-control rounded-0' name='origin'id='origin' maxvalue='200' value='{{origin}}'><option value='SoCal'>SoCal</option><option value='NorCal'>NorCal</option><option value='Central California'>Central California</option></select>";
 		document.getElementById("formStart").style.display="none";
 		document.getElementById("locationLabel").innerHTML = "Where specifically are you coming from?";
 	}
 
+	function goBack(){
+		document.getElementById("formStart").style.display="block";
+	}
+
 	document.getElementById("fromButton").addEventListener('click', depart);
 	document.getElementById("toButton").addEventListener('click', arrive);
+	document.getElementById("backButton").addEventListener('click', goBack);
 
 </script>
