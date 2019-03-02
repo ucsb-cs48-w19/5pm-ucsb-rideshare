@@ -7,7 +7,7 @@ const sortingFunctions = require("../sorting.js");
 
 // Since we're using router the / refers to /rides
 router.get("/", function(request, response) {
-	models.Ride.findAll({raw: true}) 
+	models.Ride.findAll({raw: true})
 		.then(function(rides) {
 
 			rides.sort(sortingFunctions.sortByDateTimePrice);
@@ -31,7 +31,7 @@ router.get("/add", authCheck, function(request, response) {
 });
 
 router.post("/add", authCheck, function(request, response) {
-	let {name, contact_email, origin, destination, date, time, number_of_seats, price, message} = request.body
+	let {name, contact_email, origin, destination, location, date, time, number_of_seats, price, message} = request.body
 	let errors = [];
 
 	if(!name) {
@@ -68,27 +68,29 @@ router.post("/add", authCheck, function(request, response) {
 			contact_email:contact_email,
 			origin:origin,
 			destination:destination,
+			location:location,
 			date:date,
 			time:time,
 			number_of_seats:number_of_seats,
-			price:price, 
+			price:price,
 			message:message
 		});
 	} else {
 		models.User.findOne({where: {user_id:request.user.user_id}})
 			.then(function(user) {
 				// We can use the user we just found to make a new Ride and because of the associations
-				// set up in index.js the primaryKey of the user will be pointed to by the foreign key 
+				// set up in index.js the primaryKey of the user will be pointed to by the foreign key
 				// of the new ride automatically.
 				user.createRide({
 					name:name,
 					contact_email:contact_email,
 					origin:origin,
 					destination:destination,
+					location:location,
 					date:date,
 					time:time,
 					number_of_seats:number_of_seats,
-					price:price, 
+					price:price,
 					message:message
 				})
 				// Redirects don't need the request.user passed in but all renders do.
@@ -147,10 +149,11 @@ router.get("/edit/:id", authCheck, function(request, response) {
 			contact_email:ride.contact_email,
 			origin:ride.origin,
 			destination:ride.destination,
+			location:location,
 			date:ride.date,
 			time:ride.time,
 			number_of_seats:ride.number_of_seats,
-			price:ride.price, 
+			price:ride.price,
 			message:ride.message,
 		});
 	})
@@ -163,7 +166,7 @@ router.get("/edit/:id", authCheck, function(request, response) {
 
 router.post("/edit/:id", authCheck, function(request, response) {
 
-	let {id, name, contact_email, origin, destination, date, time, number_of_seats, price, message} = request.body
+	let {id, name, contact_email, origin, destination, location, date, time, number_of_seats, price, message} = request.body
 	let errors = [];
 
 	if(!name) {
@@ -201,10 +204,11 @@ router.post("/edit/:id", authCheck, function(request, response) {
 			contact_email:contact_email,
 			origin:origin,
 			destination:destination,
+			location:location,
 			date:date,
 			time:time,
 			number_of_seats:number_of_seats,
-			price:price, 
+			price:price,
 			message:message
 		});
 	} else {
@@ -213,10 +217,11 @@ router.post("/edit/:id", authCheck, function(request, response) {
 			contact_email:contact_email,
 			origin:origin,
 			destination:destination,
+			location:location,
 			date:date,
 			time:time,
 			number_of_seats:number_of_seats,
-			price:price, 
+			price:price,
 			message:message
 		}, {where: {id:request.params.id}})
 		.then(function(ride) {
@@ -254,7 +259,3 @@ router.delete("/delete/:id", authCheck, function(request, response){
 
 
 module.exports = router;
-
-
-
-

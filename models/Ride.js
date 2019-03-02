@@ -14,6 +14,9 @@ const Ride = db.define("ride", {
 	destination: {
 		type: Sequelize.Sequelize.STRING
 	},
+	location: {
+		type: Sequelize.Sequelize.STRING
+	},
 	date: {
 		type: Sequelize.Sequelize.DATE
 	},
@@ -28,7 +31,7 @@ const Ride = db.define("ride", {
 	},
 	message: {
 		type: Sequelize.Sequelize.STRING
-	}, 
+	},
 });
 
 module.exports = Ride;
