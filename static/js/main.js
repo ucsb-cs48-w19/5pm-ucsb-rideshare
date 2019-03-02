@@ -15,3 +15,40 @@ $(document).ready(function() {
 		});
 	});
 });
+
+
+$("#to_from_ucsb").change(function() {
+
+	if($(this).val() == "to") {
+		if($("#origin").val() == "UCSB") {
+			$("#origin").val("");
+			$("#origin").attr("placeholder", "Enter the city you will be driving from");
+			$("#origin").attr("readonly", false);
+		}
+		$("#destination").val("UCSB");
+		$("#destination").attr("readonly", true);
+		
+		$("label#areaLabel span#areaLabel_from").show();
+		$("label#areaLabel span#areaLabel_to").hide();
+
+ 		
+		
+	} else {
+		$("#origin").val("UCSB");
+		$("#origin").attr("readonly", true);
+		if($("#destination").val() == "UCSB") {
+			$("#destination").val("");
+			$("#destination").attr("placeholder", "Enter the city you will be driving to");
+			$("#destination").attr("readonly", false);
+		}
+		
+		$("label#areaLabel span#areaLabel_from").hide();
+		$("label#areaLabel span#areaLabel_to").show();
+
+	}
+});
+$("#to_from_ucsb").trigger("change");
+
+
+
+
