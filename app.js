@@ -108,6 +108,15 @@ var hbs = expHandlebars.create({
 				}
 				return hour+":"+min;
 			}
+		},
+		locationHelper: function(origin){
+			var result;
+			if(origin=="Isla Vista"){
+				result = "Going to:";
+			} else {
+				result = "Coming from:";
+			}
+			return result;
 		}
 	}
 });
@@ -136,10 +145,3 @@ models.db.sync().then(function() {
 		console.log(`Server started on port ${PORT}`);
 	});
 });
-
-
-
-
-
-
-
