@@ -1,8 +1,8 @@
 
 <section id="add_ride" class="container">
 <div class="form-wrap">
-
 <div class="w-100 p-3" style="background-color: rgba(255, 255, 255, .8);">
+
 <h2 align="center">Post a Ride</h2>
 
 <ul class="mx-auto rounded=0" id="errors" class="list-group">
@@ -11,9 +11,41 @@
 {{/each}}
 </ul>
 
-<form action="/rides/add" method="POST">
+
+<form action="/rides/add" method="POST" id="rideForm">
+
+
+  <div class="form-row">
+
+    <div class="form-group col-md-6" class="input-group">
+      <label for="to_from_ucsb">I will be driving</label>
+      <select class="form-control" id="to_from_ucsb" name="to_from_ucsb">
+            {{#select to_from_ucsb}}
+            <option value="from">From UCSB</option>
+            <option value="to">To UCSB</option>
+            {{/select}}
+      </select>
+    </div>
+
+    <div class="form-group col-md-6" class="input-group">
+      <label for="areaLabel" id="areaLabel">
+          <span id="areaLabel_to">Area you will be driving to</span>
+          <span id="areaLabel_from">Area you will driving from</span>
+      </label>
+      <select class="form-control" id="area" name="area">
+          {{#select area}}
+          <option value="Southern California">Southern California</option>
+          <option value="North of Bay">North of Bay</option>
+          <option value="South of Bay">South of Bay</option>
+          <option value="Central Valley">Central Valley</option>
+          {{/select}}
+      </select>
+    </div>
+
+  </div>
   
   <div class="form-row">
+
     <div class="form-group col-md-6" class="input-group">
       <label for="name">Name</label>
       <input type="text" class="form-control rounded-0" name="name" id="name" placeholder="Name" maxlength="100" value="{{name}}">
@@ -27,6 +59,7 @@
   </div>
 
   <div class="form-row">
+
     <div class="form-group col-md-6" class="input-group">
       <label for="origin">Start Location</label>
       <input type="text" class="form-control rounded-0" name="origin" id="origin" placeholder="Enter the city you will be driving from" maxlength="200" 
@@ -39,6 +72,7 @@
       id="destination" placeholder="Enter the city you will be driving to" maxvalue="200" 
       value="{{destination}}">
     </div>
+
   </div>
 
   <div class="form-row">
@@ -80,8 +114,9 @@
   </div>
 
 </form>
-</div>
-</section>
 
+
+</section>
+</div>
 </div>
 

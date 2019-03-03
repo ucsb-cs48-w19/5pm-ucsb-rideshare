@@ -31,8 +31,9 @@ router.get("/add", authCheck, function(request, response) {
 });
 
 router.post("/add", authCheck, function(request, response) {
-	let {name, contact_email, origin, destination, date, time, number_of_seats, price, message} = request.body
+	let {name, contact_email, origin, destination, date, time, number_of_seats, price, message, area, to_from_ucsb} = request.body
 	let errors = [];
+
 
 	if(!name) {
 		errors.push({text: "Please add a name"});
@@ -72,7 +73,9 @@ router.post("/add", authCheck, function(request, response) {
 			time:time,
 			number_of_seats:number_of_seats,
 			price:price, 
-			message:message
+			message:message,
+			area:area,
+			to_from_ucsb:to_from_ucsb,
 		});
 	} else {
 		models.User.findOne({where: {user_id:request.user.user_id}})
@@ -89,7 +92,9 @@ router.post("/add", authCheck, function(request, response) {
 					time:time,
 					number_of_seats:number_of_seats,
 					price:price, 
-					message:message
+					message:message,
+					area:area,
+					to_from_ucsb:to_from_ucsb,
 				})
 				// Redirects don't need the request.user passed in but all renders do.
 				response.redirect("/rides");
@@ -137,6 +142,7 @@ router.get("/search", function(request, response) {
 
 
 router.get("/edit/:id", authCheck, function(request, response) {
+
 	// request.params.id refers to the id of the Ride not the user.
 	models.Ride.findByPk(request.params.id)
 	.then(function(ride) {
@@ -152,6 +158,8 @@ router.get("/edit/:id", authCheck, function(request, response) {
 			number_of_seats:ride.number_of_seats,
 			price:ride.price, 
 			message:ride.message,
+			area:ride.area,
+			to_from_ucsb:ride.to_from_ucsb,
 		});
 	})
 	.catch(function(err) {
@@ -163,7 +171,7 @@ router.get("/edit/:id", authCheck, function(request, response) {
 
 router.post("/edit/:id", authCheck, function(request, response) {
 
-	let {id, name, contact_email, origin, destination, date, time, number_of_seats, price, message} = request.body
+	let {id, name, contact_email, origin, destination, date, time, number_of_seats, price, message, area, to_from_ucsb} = request.body
 	let errors = [];
 
 	if(!name) {
@@ -205,7 +213,9 @@ router.post("/edit/:id", authCheck, function(request, response) {
 			time:time,
 			number_of_seats:number_of_seats,
 			price:price, 
-			message:message
+			message:message,
+			area:area,
+			to_from_ucsb:to_from_ucsb,
 		});
 	} else {
 		models.Ride.update({
@@ -217,7 +227,9 @@ router.post("/edit/:id", authCheck, function(request, response) {
 			time:time,
 			number_of_seats:number_of_seats,
 			price:price, 
-			message:message
+			message:message,
+			area:area,
+			to_from_ucsb:to_from_ucsb,
 		}, {where: {id:request.params.id}})
 		.then(function(ride) {
 			response.redirect("/rides/my_rides");
