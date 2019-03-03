@@ -147,10 +147,14 @@ router.get("/search", function(request, response) {
 	}
 	else
 	{
-		let {filterdate, filterprice,filtertime,filterdestination,filterstart}=request.query;
+		let {filterdate, filterprice,filtertime,filterarea,to_from_ucsb}=request.query;
 		var condition={};
-		condition.destination={ [Sequelize.Op.like]: "%" + filterdestination + "%" };
-		condition.origin={ [Sequelize.Op.like]: "%" + filterstart + "%" };
+		if(to_from_ucsb!='Choose')
+			condition.to_from_ucsb=to_from_ucsb;
+		if(filterarea!='Choose')
+			condition.area=filterarea;
+		//condition.destination={ [Sequelize.Op.like]: "%" + term + "%" };
+		//condition.origin={ [Sequelize.Op.like]: "%" + filterstart + "%" };
 		//if(filterdestination)
 			//condition.destination={[Sequelize.Op.iLike]: "%" + filterdestination + "%"}
 		if(filterdate)
@@ -159,6 +163,8 @@ router.get("/search", function(request, response) {
 			condition.price={[Sequelize.Op.lte]: filterprice}
 		if(filtertime)
 			condition.time={[Sequelize.Op.lte]: filtertime}
+		console.log(condition);
+		models.Ride.findAll({raw:true}).then(rides=>console.log(rides));
 		models.Ride.findAll({where: condition, raw: true})
 		.then(rides=>{
 			rides.sort(sortingFunctions.sortByDateTimePrice);

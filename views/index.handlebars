@@ -32,7 +32,14 @@
 				<label for="inputtime">Latest Time</label>
 				<input type="time" class="form-control rounded-0" id="inputtime" name="filtertime"></input>
 			</div>
-			<div class="form-group col-md-4">
+			<div class="form-group col-md-6">
+			<label for="to_from_ucsb">I'm driving...</label>
+			<select class="form-control" id="to_from_ucsb" name="to_from_ucsb">
+				<option selected>Choose</option>
+				<option value="from">From UCSB</option>
+				<option value="to">To UCSB</option>
+			</select>
+			<!--
 				<label for="inputstart">Starting Point</label>
 				<select class="form-control" id="inputstart" name="filterstart">
 					<option>San Jose</option>
@@ -43,17 +50,16 @@
 					<option>Fresno</option>
 					<option>UCSB</option>
 				</select>
+				-->
 			</div>
-			<div class="form-group col-md-4">
-				<label for="inputdestination">Destination</label>
-				<select class="form-control" id="inputdestination" name ="filterdestination">
-					<option>San Jose</option>
-					<option>San Diego</option>
-					<option>Sacramento</option>
-					<option>San Francisco</option>
-					<option>Los Angeles</option>
-					<option>Fresno</option>
-					<option>UCSB</option>
+			<div class="form-group col-md-6">
+				<label for="inputarea">Destination area</label>
+				<select class="form-control" id="inputarea" name ="filterarea">
+					<option selected>Choose</option>
+					<option>Southern California</option>
+					<option>North of Bay</option>
+					<option>South of Bay</option>
+					<option>Central Valley</option>
 				</select>
 			</div>
 		  </div>
