@@ -1,7 +1,6 @@
 # 5pm-ucsb-rideshare 
 [![Build Status](https://travis-ci.org/ucsb-cs48-w19/5pm-ucsb-rideshare.svg?branch=master)](https://travis-ci.org/ucsb-cs48-w19/5pm-ucsb-rideshare)
 
-Make sure to check out the repo anew (potentially on a loaned laptop) and test your installation instructions.
 
 ### UCSB RIDESHARE
 An app to help UCSB students coordinate carpools. 
@@ -21,11 +20,14 @@ An app to help UCSB students coordinate carpools.
 An app dedicated to facilitating shared rides and carpools as painlessly as possible. Drivers can post rides with a user friendly and flexible form, and riders can quickly find rides that suit their needs with a filtered search! Designed for those who are tired of scrolling through endless facebook posts in search of a ride that suits their needs. 
 
 ### Installation Requirements
-Must have most current version of [node.js](https://nodejs.org/en/node.js) and [postgreSQL](https://www.postgresql.org/ftp/pgadmin/pgadmin4/v4.1/macos/postgreSQL) to run locally. 
+User must have the most current version of [node.js](https://nodejs.org/en/) and [postgreSQL](https://www.postgresql.org) to run locally. 
 
 ### Installation Steps
-After forking the repo open a terminal window, navigate to the root of the repo and type "npm install." <br>
-To run the app on localhost the user will also need to navigate to the "config" directory and create a file named "keys.js." Copy and paste the following snippet of code into the newly created file.
+* Fork the repo
+* Open a terminal window and navigate to the root of the repo
+* install dependencies ```npm install```
+
+To run the app on localhost the user will also need to navigate to the `config` directory and create a file named `keys.js.` Copy and paste the following template into the newly created `keys.js` file:
 ```   
 const keys = {
 	facebook: {
@@ -50,16 +52,18 @@ const keys = {
 
 module.exports = keys;
 ```
-All fields contained in <> brackets should be replaced with appropriate values. <br> 
-To generate valid Oauth client IDs and client secrets for the "facebook" and "google" fields the user should go to facebook and google's developer websites and follow the specified steps. While generating these values you will also be prompted to create callback URLs. For this step you must use the callback URLs specified above. 
-For the "database" field the user should create a local database on their machine and provide the required values.
-For the "sessionSecret" field the user can use any random string of their choice for the value of "secret". <br>
-Once the "keys.js" file is completed the app is ready to run on local host. Type the following line into the terminal: npm run dev <br>
+All fields in the `keys.js` template wrapped in <> brackets must be replaced with appropriate values. <br> 
+* To generate valid Oauth client IDs and client secrets for the `facebook` and `google` fields the user must go to [facebook](https://developers.facebook.com) and [google's](https://developers.google.com) developer websites and follow the required steps. When generating these values the user will also be prompted to create callback URLs. For this step you must use the callback URLs specified above in the `keys.js` template. 
+* For the `database` field the user must create a local postgreSQL database on their machine and provide the required values.
+* For the `sessionSecret` field the user can use any random string of their choice for the value of `secret`.
+
+Once the `keys.js` file is completed the app is ready to run on local host. <br>
+Type the following line into the terminal: ```npm start``` <br>
 The app is now running on localhost:5000. <br> 
-The app can also be accessed from https://ucsb-rideshare-w19.herokuapp.com/
+The app can also be accessed at https://ucsb-rideshare-w19.herokuapp.com/
 
 ### Functionality
-The main functionaly of this webapp is to provide students with a way to arrange carpools. To see a list of available rides a user can click on the "rides" button in the navbar located at the top of the screen. This page contains a list of all available rides along with information such as the destination, pickup time, pickup date and a link where users can send the individual offering the ride an email. To add a ride users must be logged in. To login a user can simply click on the "login" button in the navbar. They will be redirected to a page propting them to login using either their facebook or gmail account. Once the user is logged in they can click on the "Add Ride" button in the navbar which will send them to a page that contains a form. Once the form is filled out and submitted the new ride will appear in the list on the "Rides" page. When the user is finished the can click the "Logout" button in the navbar to logout. While logged in the user can also navigate to a profile page by clicking "Profile" in the navbar. The user's profile page contains information about the users account. 
+The main functionaly of this webapp is to provide UCSB students with a way to arrange carpools. From the homepage of the app if a user wants to see a list of available rides a they can click on the "rides" button in the navbar located at the top of the screen. This page contains a list of all available rides along with information such as the destination, pickup time, pickup date and a link where users can send an email to the person offering the ride. To add a ride users must be logged in. To login a user can click on the "login" button in the navbar. They will be redirected to a page prompting them to login using either their facebook or gmail account. Once the user is logged in they can click on the "Add Ride" button in the navbar which will send them to a page that contains a form to be filled out. Once the form is filled out and submitted the new ride will appear in the list on the "Rides" page. When the user is finished the can click the "Logout" button in the navbar to logout. While logged in the user can also navigate to their profile page by clicking on "Profile" in the navbar. The user's profile page contains information about the users account. From this page the user can edit or delete their posts by clicking on the "My rides" button where they will be redirected to a page that displays all of the rides they've posted. Each post has a working "delete" and "edit" button.
 
 ### Known Problems
 No known issues.
