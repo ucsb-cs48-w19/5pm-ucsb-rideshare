@@ -16,6 +16,14 @@ $(document).ready(function() {
 	});
 });
 
+$('#to_from_ucsb_fil').change(function() {
+	if($(this).val() == 'from')
+	{
+		$('#areaprompt').text('Destination Area');
+	}
+	else if($(this).val() == 'to')
+		$('#areaprompt').text('Starting Area');
+});
 
 $("#to_from_ucsb").change(function() {
 
