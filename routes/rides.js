@@ -131,7 +131,6 @@ router.get("/search", function(request, response) {
 	//set term to lower for searching properly
 	//term= term.toLowerCase();
 	let {term, filter} = request.query;
-	term= term.toLowerCase();
 	if(!filter)
 	{
 	models.Ride.findAll( {where: {destination: { [Sequelize.Op.iLike]: "%" + term + "%" }}})
@@ -147,12 +146,31 @@ router.get("/search", function(request, response) {
 	}
 	else
 	{
-		let {filterdate, filterprice,filtertime,filterarea,to_from_ucsb}=request.query;
+		let {filterdate, filterprice,filtertime,filterarea,to_from_ucsb,filterspecific}=request.query;
 		var condition={};
+		if(term)
+			condition.destination=term;
 		if(to_from_ucsb!='Choose')
+		{
 			condition.to_from_ucsb=to_from_ucsb;
+			if(to_from_ucsb=='from')
+			{
+				if(filterspecific)
+					condition.destination={[Sequelize.Op.iLike]:filterspecific};
+				condition.origin={[Sequelize.Op.iLike]: 'UCSB'};
+			}
+			else
+			{
+				if(filterspecific)
+					condition.origin={[Sequelize.Op.iLike]:filterspecific};
+				condition.destination={[Sequelize.Op.iLike]:'UCSB'};
+			}
+		}
+		if(filterspecific)
+			condition[Sequelize.Op.or]=[{origin:filterspecific},{destination:filterspecific}];
 		if(filterarea!='Choose')
 			condition.area=filterarea;
+		
 		//condition.destination={ [Sequelize.Op.like]: "%" + term + "%" };
 		//condition.origin={ [Sequelize.Op.like]: "%" + filterstart + "%" };
 		//if(filterdestination)
@@ -163,8 +181,11 @@ router.get("/search", function(request, response) {
 			condition.price={[Sequelize.Op.lte]: filterprice}
 		if(filtertime)
 			condition.time={[Sequelize.Op.lte]: filtertime}
-		console.log(condition);
-		models.Ride.findAll({raw:true}).then(rides=>console.log(rides));
+		
+		
+		
+		//console.log(condition);
+		//models.Ride.findAll({raw:true}).then(rides=>console.log(rides));
 		models.Ride.findAll({where: condition, raw: true})
 		.then(rides=>{
 			rides.sort(sortingFunctions.sortByDateTimePrice);
