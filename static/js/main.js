@@ -16,6 +16,30 @@ $(document).ready(function() {
 	});
 });
 
+$('#filter').change(function(){
+	if($(this).prop('checked')==true)
+	{
+		$('#term').val('');
+		$('#term').prop('disabled',true);
+		$('#filterEnabled').show();
+	}
+	else
+	{
+		$('#term').prop('disabled',false);
+		$('#filterEnabled').hide();
+	}
+});
+
+$('#to_from_ucsb_fil').change(function() {
+	if($(this).val() == 'from')
+	{
+		$('#areaprompt').text('Destination Area');
+	}
+	else if($(this).val() == 'to')
+	{
+		$('#areaprompt').text('Starting Area');
+	}
+});
 
 $("#to_from_ucsb").change(function() {
 

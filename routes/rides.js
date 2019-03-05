@@ -59,6 +59,9 @@ router.post("/add", authCheck, function(request, response) {
 	if(!price) {
 		errors.push({text: "Please add the price"});
 	}
+	//change each of these to lowercase before adding to database so that they are easier to search for
+	//destination = destination.toLowerCase();
+	//origin = origin.toLowerCase();
 	// Might be a good idea to also add type checks too. Especially for
 	// dates and times.
 	if(errors.length > 0) {
@@ -125,10 +128,12 @@ router.get("/my_rides", authCheck, function(request, response) {
 
 
 router.get("/search", function(request, response) {
-
-	let {term} = request.query
-
-	models.Ride.findAll( {where: {destination: { [Sequelize.Op.like]: "%" + term + "%" }}})
+	//set term to lower for searching properly
+	//term= term.toLowerCase();
+	let {term, filter} = request.query;
+	if(!filter)
+	{
+	models.Ride.findAll( {where: {destination: { [Sequelize.Op.iLike]: "%" + term + "%" }}})
 	.then(function(rides) {
 		response.render("rides", {
 			user:request.user,
@@ -138,6 +143,57 @@ router.get("/search", function(request, response) {
 	.catch(function(err) {
 		console.log(err);
 	})
+	}
+	else
+	{
+		let {filterdate, filterprice,filtertime,filterarea,to_from_ucsb,filterspecific}=request.query;
+		var condition={};
+		if(to_from_ucsb!='Choose')
+		{
+			condition.to_from_ucsb=to_from_ucsb;
+			if(to_from_ucsb=='from')
+			{
+				if(filterspecific)
+					condition.destination={[Sequelize.Op.iLike]:filterspecific};
+				condition.origin={[Sequelize.Op.iLike]: 'UCSB'};
+			}
+			else
+			{
+				if(filterspecific)
+					condition.origin={[Sequelize.Op.iLike]:filterspecific};
+				condition.destination={[Sequelize.Op.iLike]:'UCSB'};
+			}
+		}
+		else if(filterspecific)
+			condition[Sequelize.Op.or]=[{origin:{[Sequelize.Op.iLike]:filterspecific}},{destination:{[Sequelize.Op.iLike]:filterspecific}}];
+		if(filterarea!='Choose')
+			condition.area=filterarea;
+		
+		//condition.destination={ [Sequelize.Op.like]: "%" + term + "%" };
+		//condition.origin={ [Sequelize.Op.like]: "%" + filterstart + "%" };
+		//if(filterdestination)
+			//condition.destination={[Sequelize.Op.iLike]: "%" + filterdestination + "%"}
+		if(filterdate)
+			condition.date={[Sequelize.Op.lte]: filterdate}
+		if(filterprice)
+			condition.price={[Sequelize.Op.lte]: filterprice}
+		if(filtertime)
+			condition.time={[Sequelize.Op.lte]: filtertime}
+		
+		
+		
+		//console.log(condition);
+		//models.Ride.findAll({raw:true}).then(rides=>console.log(rides));
+		models.Ride.findAll({where: condition, raw: true})
+		.then(rides=>{
+			rides.sort(sortingFunctions.sortByDateTimePrice);
+			
+			response.render("rides",{
+				user:request.user,
+				rides:rides,
+			});
+		});
+	}
 });
 
 

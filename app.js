@@ -7,6 +7,7 @@ const passportSetup = require("./config/passport.js");
 const passport = require ("passport");
 const session = require("express-session");
 const models = require("./models/index");
+const favicon = require('serve-favicon');
 if(!process.env.DATABASE_URL) {
 	//We are running on local host and must use the information in a file called
 	// keys.js in the config directory (see the readme about how to create the
@@ -29,10 +30,10 @@ models.db.authenticate()
 const app = express();
 
 
-
 // // Setting static folder for css and images
 app.use(express.static(path.join(__dirname, "static")));
-
+app.use(express.static(path.join(__dirname,'public')));
+app.use(favicon(path.join(__dirname,'static','favicon.ico')));
 
 // Redirecting bootstrap and jquery files from node_modules directory to static
 // Redirect bootstrap js
