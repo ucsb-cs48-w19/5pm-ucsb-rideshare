@@ -14,6 +14,11 @@ $(document).ready(function() {
 			}
 		});
 	});
+	if($('#filter').prop('checked')==true)
+	{
+		$('#filter').trigger('change');
+		$('#to_from_ucsb_fil').trigger('change');
+	}
 });
 
 $('#filter').change(function(){
