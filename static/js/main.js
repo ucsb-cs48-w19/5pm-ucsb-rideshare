@@ -39,11 +39,6 @@ $('#to_from_ucsb_fil').change(function() {
 	{
 		$('#areaprompt').text('Starting Area');
 	}
-	else
-	{
-		$('#term').attr('disabled',false);
-		$('#filterspecific').val('');
-	}
 });
 
 $("#to_from_ucsb").change(function() {
