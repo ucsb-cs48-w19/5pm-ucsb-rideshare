@@ -32,8 +32,7 @@ const app = express();
 
 // // Setting static folder for css and images
 app.use(express.static(path.join(__dirname, "static")));
-app.use(express.static(path.join(__dirname,'public')));
-app.use(favicon(path.join(__dirname,'static','favicon.ico')));
+app.use(favicon(path.join(__dirname,'static','images/favicon.ico')));
 
 // Redirecting bootstrap and jquery files from node_modules directory to static
 // Redirect bootstrap js
@@ -124,16 +123,6 @@ var hbs = expHandlebars.create({
 app.engine('handlebars', hbs.engine);
 app.set("view engine", "handlebars");
 
-app.get('/', function (req, res, next) {
-    res.render('rides', {
-        showTitle: true,
-
-        // Override `foo` helper only for this rendering.
-        helpers: {
-            foo: function () { return 'foo.'; }
-        }
-    });
-});
 
 
 const PORT = process.env.PORT || 5000;

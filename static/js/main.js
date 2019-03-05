@@ -14,6 +14,11 @@ $(document).ready(function() {
 			}
 		});
 	});
+	if($('#filter').prop('checked')==true)
+	{
+		$('#filter').trigger('change');
+		$('#to_from_ucsb_fil').trigger('change');
+	}
 });
 
 $('#filter').change(function(){
@@ -34,12 +39,20 @@ $('#to_from_ucsb_fil').change(function() {
 	if($(this).val() == 'from')
 	{
 		$('#areaprompt').text('Destination Area');
+		$('#filterspecific').text('Destination City');
 	}
 	else if($(this).val() == 'to')
 	{
 		$('#areaprompt').text('Starting Area');
+		$('#filterspecific').text('Starting City');
+	} 
+	else 
+	{
+		$('#areaprompt').text('Area');
+		$('#filterspecific').text('City');
 	}
 });
+
 
 $("#to_from_ucsb").change(function() {
 

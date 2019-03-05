@@ -6,7 +6,7 @@
 		  
 		  <div class="form-group form-row" class="input-group">
 		    <div class="col-lg-10">
-		    <input class="form-control rounded-0" name="term" id="term" placeholder="What city would you like to get a ride to?"></input>
+		    <input class="form-control rounded-0" name="term" id="term" placeholder="Where would you like to get a ride to?"></input>
 			</div>
 			<div class="col-lg-2" style="top:5px;">
 			   <div class="form-check" align="center">
@@ -22,38 +22,27 @@
 		  <div class="form-row">
 		  <div class="form-group col-md-4" >
 				<label for="inputdate">Latest Date</label>
-				<input type="date" class="form-control rounded-0" id="inputdate" name="filterdate"></input>
+				<input type="date" class="form-control rounded-0" id="inputdate" name="filterdate" placeholder="mm/dd/yyyy"></input>
 			</div>
 			<div class="form-group col-md-4">
 				<label for="inputprice">Maximum Price</label>
-				<input type="number" class="form-control rounded-0" id="inputprice" name="filterprice"></input>
+				<input type="number" class="form-control rounded-0" id="inputprice" name="filterprice" placeholder="Dollar amount"></input>
 			</div>
 			<div class="form-group col-md-4">
 				<label for="inputtime">Latest Time</label>
-				<input type="time" class="form-control rounded-0" id="inputtime" name="filtertime"></input>
+				<input type="time" class="form-control rounded-0" id="inputtime" name="filtertime" placeholder="hh:mm am/pm"></input>
 			</div>
 			<div class="form-group col-md-4">
-			<label for="to_from_ucsb_fil">I'm driving...</label>
+			<label for="to_from_ucsb_fil">Get a ride...</label>
 			<select class="form-control" id="to_from_ucsb_fil" name="to_from_ucsb">
 				<option selected>Choose</option>
 				<option value="from">From UCSB</option>
 				<option value="to">To UCSB</option>
 			</select>
-			<!--
-				<label for="inputstart">Starting Point</label>
-				<select class="form-control" id="inputstart" name="filterstart">
-					<option>San Jose</option>
-					<option>San Diego</option>
-					<option>Sacramento</option>
-					<option>San Francisco</option>
-					<option>Los Angeles</option>
-					<option>Fresno</option>
-					<option>UCSB</option>
-				</select>
-				-->
+
 			</div>
 			<div class="form-group col-md-4">
-				<label for="inputarea" id="areaprompt">Destination Area</label>
+				<label for="inputarea" id="areaprompt">Area</label>
 				<select class="form-control" id="inputarea" name ="filterarea">
 					<option selected>Choose</option>
 					<option>Southern California</option>
@@ -63,8 +52,8 @@
 				</select>
 			</div>
 			<div class="form-group col-md-4">
-				<label for="filterspecific">Specific location</label>
-				<input class="form-control" type="text" id="filterspecific" name="filterspecific"></input>
+				<label for="filterspecific" id="filterspecific">City</label>
+				<input class="form-control" type="text" id="specificinput" name="filterspecific" placeholder="Enter a city name"></input>
 			</div>
 		  </div>
 		  </div>
