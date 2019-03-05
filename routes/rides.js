@@ -148,8 +148,6 @@ router.get("/search", function(request, response) {
 	{
 		let {filterdate, filterprice,filtertime,filterarea,to_from_ucsb,filterspecific}=request.query;
 		var condition={};
-		if(term)
-			condition.destination=term;
 		if(to_from_ucsb!='Choose')
 		{
 			condition.to_from_ucsb=to_from_ucsb;
@@ -166,8 +164,8 @@ router.get("/search", function(request, response) {
 				condition.destination={[Sequelize.Op.iLike]:'UCSB'};
 			}
 		}
-		if(filterspecific)
-			condition[Sequelize.Op.or]=[{origin:filterspecific},{destination:filterspecific}];
+		else if(filterspecific)
+			condition[Sequelize.Op.or]=[{origin:{[Sequelize.Op.iLike]:filterspecific}},{destination:{[Sequelize.Op.iLike]:filterspecific}}];
 		if(filterarea!='Choose')
 			condition.area=filterarea;
 		
