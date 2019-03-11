@@ -53,7 +53,7 @@ const keys = {
 module.exports = keys;
 ```
 All fields in the `keys.js` template wrapped in <> brackets must be replaced with appropriate values. <br> 
-* To generate valid Oauth client IDs and client secrets for the `facebook` and `google` fields the user must go to [facebook](https://developers.facebook.com) and [google's](https://developers.google.com) developer websites and follow the required steps. When generating these values the user will also be prompted to create callback URLs. For this step you must use the callback URLs specified above in the `keys.js` template. 
+* To generate valid Oauth client IDs and client secrets for the `facebook` and `google` fields the user must go to [facebook](https://developers.facebook.com/docs/facebook-login/) and [google's](https://developers.google.com) developer websites and follow the required steps. When generating these values the user will also be prompted to create callback URLs. For this step you must use the callback URLs specified above in the `keys.js` template. 
 * For the `database` field the user must create a local postgreSQL database on their machine and provide the required values.
 * For the `sessionSecret` field the user can use any random string of their choice for the value of `secret`.
 
