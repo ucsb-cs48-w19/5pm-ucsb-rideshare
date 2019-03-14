@@ -16,11 +16,8 @@
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
-<<<<<<< HEAD
     "handlebars": "^4.1.0",
-=======
     "font-awesome": "^4.7.0",
->>>>>>> 1a52747135ba89258a7a62aa6ce1c77488fd110a
     "jquery": "^3.3.1",
     "mocha": "^6.0.2",
     "passport": "^0.4.0",
