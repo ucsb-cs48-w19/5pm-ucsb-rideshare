@@ -1,6 +1,10 @@
+
+
 body {
-	background: url('../images/background.jpg') no-repeat fixed;
+	background: url('../images/background_prog.jpg') no-repeat fixed;
     background-size: cover;
+    background-color: #0f7186 !important;
+
 }
 
 

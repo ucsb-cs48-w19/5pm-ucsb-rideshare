@@ -29,6 +29,12 @@ const Ride = db.define("ride", {
 	message: {
 		type: Sequelize.Sequelize.STRING
 	}, 
+	area: {
+		type: Sequelize.Sequelize.STRING
+	}, 
+	to_from_ucsb: {
+		type: Sequelize.Sequelize.STRING
+	}
 });
 
 module.exports = Ride;

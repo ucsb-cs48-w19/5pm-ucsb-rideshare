@@ -2,10 +2,60 @@
 	<div class="w-100 p-3" style="background-color: rgba(255, 255, 255, .8);">
 	<h2 align="center">Search for a Ride</h2>
 
-		<form action="/rides/search" class="search-form">
+		<form action="/rides/search" class="search-form form-horizontal">
 		  
-		  <div class="form-group" class="input-group">
-		    <input class="form-control rounded-0" name="term" id="term" placeholder="What city would you like to get a ride to?"></inpust>
+		  <div class="form-group form-row" class="input-group">
+		    <div class="col-lg-10">
+		    <input class="form-control rounded-0" name="term" id="term" placeholder="Where would you like to get a ride to?"></input>
+			</div>
+			<div class="col-lg-2" style="top:5px;">
+			   <div class="form-check" align="center">
+				  <input class="form-check-input" type="checkbox" name="filter" id="filter" style="margin-up: 10px; width: 19px; height:19px"></input>
+				  <label class="form-check-label form-control-md" for="filter" align="center">
+				     Enable Filter
+				  </label>
+				  
+			   </div>
+			</div>
+		  </div>
+		  <div id="filterEnabled" style="display: none;">
+		  <div class="form-row">
+		  <div class="form-group col-md-4" >
+				<label for="inputdate">Latest Date</label>
+				<input type="date" class="form-control rounded-0" id="inputdate" name="filterdate" placeholder="mm/dd/yyyy"></input>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputprice">Maximum Price</label>
+				<input type="number" class="form-control rounded-0" id="inputprice" name="filterprice" placeholder="Dollar amount"></input>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputtime">Latest Time</label>
+				<input type="time" class="form-control rounded-0" id="inputtime" name="filtertime" placeholder="hh:mm am/pm"></input>
+			</div>
+			<div class="form-group col-md-4">
+			<label for="to_from_ucsb_fil">Get a ride...</label>
+			<select class="form-control" id="to_from_ucsb_fil" name="to_from_ucsb">
+				<option selected>Choose</option>
+				<option value="from">From UCSB</option>
+				<option value="to">To UCSB</option>
+			</select>
+
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputarea" id="areaprompt">Area</label>
+				<select class="form-control" id="inputarea" name ="filterarea">
+					<option selected>Choose</option>
+					<option>Southern California</option>
+					<option>North of Bay</option>
+					<option>South of Bay</option>
+					<option>Central Valley</option>
+				</select>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="filterspecific" id="filterspecific">City</label>
+				<input class="form-control" type="text" id="specificinput" name="filterspecific" placeholder="Enter a city name"></input>
+			</div>
+		  </div>
 		  </div>
 		  <div id="contactBtn" class="col-md-12 text-center">
 		    <button type="submit" text="center" class="btn btn-dark"> <i class="fa fa-search"></i> </button>       
@@ -14,7 +64,4 @@
 		</form>
 	</div>
 </section>
-
-
-
 
