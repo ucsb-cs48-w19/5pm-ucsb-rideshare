@@ -3,6 +3,8 @@
 
 
 ### UCSB RIDESHARE
+https://ucsb-rideshare-w19.herokuapp.com/
+
 An app to help UCSB students coordinate carpools. 
 
 ### Minimum Viable Product
